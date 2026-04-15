@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0c1220" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="application-name" content="Crypto Pulse" />
+    <meta
+      name="description"
+      content="Monitor de criptomoedas com acompanhamento em tempo real, favoritos persistentes e alertas locais de preço."
+    />
+    <meta
+      property="og:title"
+      content="Crypto Pulse | Monitor de Criptomoedas em Tempo Real"
+    />
+    <meta
+      property="og:description"
+      content="Acompanhe criptomoedas em tempo real, salve favoritas e crie alertas locais em uma interface rápida e responsiva."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Crypto Pulse" />
+    <meta property="og:image" content="./assets/seo-preview.svg" />
+    <meta
+      property="og:image:alt"
+      content="Prévia do aplicativo Crypto Pulse com monitoramento de criptomoedas"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Crypto Pulse | Monitor de Criptomoedas em Tempo Real"
+    />
+    <meta
+      name="twitter:description"
+      content="Veja preços em tempo real, acompanhe favoritas e receba alertas locais de preço."
+    />
+    <meta name="twitter:image" content="./assets/seo-preview.svg" />
+    <title>Crypto Pulse | Monitor de Criptomoedas em Tempo Real</title>
+
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Crypto Pulse",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "description": "Monitor de criptomoedas com acompanhamento em tempo real, favoritos persistentes e alertas locais de preço.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+        }
+      }
+    </script>
+    <script type="module" src="./src/js/main.js" defer></script>
+  </head>
+  <body>
+    <div class="scene-decor" aria-hidden="true">
+      <span class="scene-dot scene-dot--mint"></span>
+      <span class="scene-dot scene-dot--rose"></span>
+      <span class="scene-ring scene-ring--left"></span>
+      <span class="scene-ring scene-ring--right"></span>
+      <span class="scene-diamond scene-diamond--left"></span>
+      <span class="scene-diamond scene-diamond--right"></span>
+    </div>
+
+    <main class="app-shell">
+      <section class="hero-card app-phone app-phone--primary">
+        <div class="phone-topbar">
+          <button class="topbar-brand" type="button" aria-label="Abrir app">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div class="phone-profile" aria-label="Atalho do painel">
+            <span class="phone-profile__icon" aria-hidden="true">
+              <i class="bi bi-grid-1x2-fill"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-copy">
+          <p class="eyebrow">Crypto Pulse</p>
+          <h1>Suas criptomoedas favoritas, sempre a um toque de distância.</h1>
+          <p class="hero-text">
+            Acompanhe os preços em tempo real, marque suas moedas preferidas e
+            receba alertas locais de variação para tomar decisões rápidas no
+            mercado.
+          </p>
+        </div>
+
+        <div class="hero-highlight" id="featured-coin">
+          <div class="featured-header">
+            <span class="badge" id="featured-rank">Mais acompanhada</span>
+            <button
+              class="icon-button"
+              id="refresh-button"
+              type="button"
+              aria-label="Atualizar cotações"
+            >
+              Atualizar
+            </button>
+          </div>
+
+          <div class="featured-main">
+            <div class="featured-identity">
+              <div class="featured-coin-media">
+                <img
+                  id="featured-image"
+                  class="featured-coin-image"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                  alt="Moeda em destaque"
+                />
+              </div>
+              <div>
+                <p class="featured-symbol" id="featured-symbol">BTC</p>
+                <h2 id="featured-name">Bitcoin</h2>
+                <p class="featured-price-brl" id="featured-price-brl">R$ --</p>
+              </div>
+            </div>
+            <div class="featured-side">
+              <p class="featured-price" id="featured-price">Carregando...</p>
+              <button
+                class="favorite-toggle favorite-toggle--featured"
+                id="featured-favorite-button"
+                type="button"
+                aria-pressed="false"
+              >
+                <span class="button-icon" aria-hidden="true">
+                  <i class="bi bi-star"></i>
+                </span>
+                <span data-featured-favorite-label>Favoritar</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="featured-metrics">
+            <article>
+              <span>24h</span>
+              <strong id="featured-change">--</strong>
+            </article>
+            <article>
+              <span>Max 24h</span>
+              <strong id="featured-high">--</strong>
+            </article>
+            <article>
+              <span>Min 24h</span>
+              <strong id="featured-low">--</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="panel filters-panel app-phone app-phone--secondary"
+        aria-label="Filtros e status"
+      >
+        <div class="phone-topbar phone-topbar--compact">
+          <button class="topbar-brand" type="button" aria-label="Abrir atalhos">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div class="phone-profile" aria-label="Atalho do painel">
+            <span class="phone-profile__icon" aria-hidden="true">
+              <i class="bi bi-sliders2"></i>
+            </span>
+          </div>
+        </div>
+
+        <label class="search-field" for="search-input">
+          <span>Buscar moeda</span>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Ex.: bitcoin, solana, xrp"
+          />
+        </label>
+
+        <div class="panel-actions">
+          <button class="chip is-active" type="button" data-filter="all">
+            Todas
+          </button>
+          <button class="chip" type="button" data-filter="gainers">
+            <span class="button-icon" aria-hidden="true">
+              <i class="bi bi-graph-up-arrow"></i>
+            </span>
+            Em alta
+          </button>
+          <button class="chip" type="button" data-filter="losers">
+            <span class="button-icon" aria-hidden="true">
+              <i class="bi bi-graph-down-arrow"></i>
+            </span>
+            Em queda
+          </button>
+          <button class="chip" type="button" data-filter="favorites">
+            <span class="button-icon" aria-hidden="true">
+              <i class="bi bi-star-fill"></i>
+            </span>
+            Favoritas
+          </button>
+          <button class="chip" type="button" data-filter="alerts">
+            <span class="button-icon" aria-hidden="true">
+              <i class="bi bi-bell-fill"></i>
+            </span>
+            Com alerta
+          </button>
+        </div>
+
+        <div class="usage-stats" aria-label="Estatisticas de uso da ferramenta">
+          <article class="usage-stat">
+            <span>Total de moedas</span>
+            <strong id="usage-total-assets">0</strong>
+          </article>
+          <article class="usage-stat">
+            <span>Favoritas</span>
+            <strong id="usage-total-favorites">0</strong>
+          </article>
+          <article class="usage-stat">
+            <span>Alertas ativos</span>
+            <strong id="usage-total-alerts">0</strong>
+          </article>
+          <article class="usage-stat">
+            <span>Visualizações</span>
+            <strong id="usage-total-views">0</strong>
+          </article>
+        </div>
+
+        <p class="status-line" id="status-line">Carregando cotações...</p>
+      </section>
+
+      <section
+        class="panel market-panel app-phone app-phone--market"
+        id="market-panel"
+        aria-labelledby="market-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Mercado</p>
+            <h3 id="market-title">Moedas para consulta e acompanhamento</h3>
+          </div>
+          <span class="pill" id="asset-count">0 ativos</span>
+        </div>
+
+        <div class="asset-list" id="asset-list"></div>
+      </section>
+    </main>
+
+    <section
+      class="alerts-screen"
+      id="alerts-panel"
+      aria-labelledby="alerts-title"
+      aria-modal="true"
+      role="dialog"
+      hidden
+    >
+      <button
+        class="alerts-screen__backdrop"
+        type="button"
+        data-close-alerts-panel
+        aria-label="Fechar tela de alertas"
+      ></button>
+
+      <div class="alerts-panel app-sheet">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Alertas</p>
+            <h3 id="alerts-title">Criar alerta de preço</h3>
+          </div>
+          <div class="section-heading__actions">
+            <button class="icon-button" id="notification-button" type="button">
+              <span class="button-icon" aria-hidden="true">
+                <i class="bi bi-bell-fill"></i>
+              </span>
+              Ativar notificações
+            </button>
+            <button
+              class="ghost-button"
+              id="close-alerts-panel"
+              type="button"
+              data-close-alerts-panel
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+
+        <div class="alerts-panel__intro">
+          <div>
+            <p class="alerts-panel__kicker">Painel</p>
+            <h4>Monte um gatilho rápido para qualquer moeda acompanhada.</h4>
+            <p>
+              Escolha o ativo, defina a condição e deixe o painel monitorando a
+              variação para você.
+            </p>
+          </div>
+        </div>
+
+        <div class="alerts-screen__content">
+          <div class="alert-composer">
+            <form class="alert-form" id="alert-form">
+              <label>
+                <span>Moeda</span>
+                <select id="alert-asset" required></select>
+              </label>
+
+              <label>
+                <span>Condição</span>
+                <select id="alert-condition" required>
+                  <option value="above">Avisar quando subir acima de</option>
+                  <option value="below">Avisar quando cair abaixo de</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Preço-alvo em USD</span>
+                <input
+                  id="alert-price"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  step="0.000001"
+                  placeholder="Ex.: 95000"
+                  required
+                />
+              </label>
+
+              <button class="primary-button" type="submit">
+                Salvar alerta
+              </button>
+            </form>
+          </div>
+
+          <div class="alerts-history">
+            <div class="section-heading section-heading--tight">
+              <div>
+                <p class="alerts-panel__kicker">Monitorando</p>
+                <h4>Alertas ativos e histórico recente</h4>
+              </div>
+            </div>
+
+            <div class="alert-list" id="alert-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="app-dock" aria-label="Atalhos do aplicativo">
+      <button
+        class="dock-button"
+        type="button"
+        id="dock-market"
+        aria-label="Início"
+      >
+        <span class="dock-icon" aria-hidden="true">
+          <i class="bi bi-house-door-fill"></i>
+        </span>
+      </button>
+
+      <button
+        class="dock-button dock-button--settings"
+        type="button"
+        id="dock-settings"
+        aria-controls="settings-panel"
+        aria-expanded="false"
+        aria-label="Configurações"
+      >
+        <span class="dock-icon" aria-hidden="true">
+          <i class="bi bi-gear-fill"></i>
+        </span>
+      </button>
+
+      <button
+        class="dock-button dock-button--alert"
+        type="button"
+        id="dock-alert"
+        aria-controls="alerts-panel"
+        aria-expanded="false"
+        aria-label="Alertas"
+      >
+        <span class="dock-icon" aria-hidden="true">
+          <i class="bi bi-bell-fill"></i>
+        </span>
+      </button>
+    </footer>
+
+    <section
+      class="settings-screen"
+      id="settings-panel"
+      aria-labelledby="settings-title"
+      aria-modal="true"
+      role="dialog"
+      hidden
+    >
+      <button
+        class="settings-screen__backdrop"
+        type="button"
+        data-close-settings-panel
+        aria-label="Fechar configurações"
+      ></button>
+
+      <div class="settings-panel app-sheet">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Configurações</p>
+            <h3 id="settings-title">Escolha entre os temas Light e Dark</h3>
+          </div>
+          <button
+            class="ghost-button"
+            id="close-settings-panel"
+            type="button"
+            data-close-settings-panel
+          >
+            Fechar
+          </button>
+        </div>
+
+        <div class="settings-panel__content">
+          <p class="settings-panel__text">
+            Alterne entre os dois modos principais do app com mais contraste e
+            leitura.
+          </p>
+
+          <div
+            class="theme-picker"
+            id="theme-picker"
+            role="radiogroup"
+            aria-label="Escolha de tema"
+          >
+            <button
+              class="theme-option"
+              type="button"
+              data-theme-option="light"
+            >
+              <span class="theme-option__swatches" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </span>
+              <strong>Light</strong>
+              <small>Claro, limpo e mais aberto.</small>
+            </button>
+            <button class="theme-option" type="button" data-theme-option="dark">
+              <span
+                class="theme-option__swatches theme-option__swatches--dark"
+                aria-hidden="true"
+              >
+                <span></span><span></span><span></span>
+              </span>
+              <strong>Dark</strong>
+              <small>Escuro, forte e focado no conteúdo.</small>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

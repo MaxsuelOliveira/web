@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Acesse ou crie uma conta local para usar o Gestor de Plantas."
+    />
+    <title>Login | Gestor de Plantas</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="auth-page">
+    <main class="auth-shell">
+      <section class="auth-hero">
+        <span class="auth-badge"
+          ><span class="title-emoji">🌿</span> Jardim local com progresso</span
+        >
+        <h1 style="margin-bottom: 5px;"">Entre no seu jardim digital.</h1>
+        <p>
+          Crie uma conta, acompanhe sua coleção de plantas, ganhe experiência
+          por cuidado e receba lembretes locais de rega e sol.
+        </p>
+
+        <div class="auth-feature-list">
+          <article>
+            <strong><span class="title-emoji">🪴</span> Coleção pessoal</strong>
+            <p>Cada usuário mantém suas próprias plantas e progresso.</p>
+          </article>
+          <article>
+            <strong><span class="title-emoji">🏆</span> Gamificação</strong>
+            <p>Ganhe XP, moedas verdes, streak e conquistas.</p>
+          </article>
+          <article>
+            <strong
+              ><span class="title-emoji">🔔</span> Lembretes locais</strong
+            >
+            <p>
+              O app pode notificar cuidados pendentes enquanto estiver aberto.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="auth-card">
+        <div class="auth-tabs" role="tablist" aria-label="Acesso">
+          <button
+            class="auth-tab is-active"
+            type="button"
+            data-auth-tab="login"
+          >
+            Entrar
+          </button>
+          <button class="auth-tab" type="button" data-auth-tab="signup">
+            Criar conta
+          </button>
+        </div>
+
+        <div class="auth-feedback" id="auth-feedback" aria-live="polite"></div>
+
+        <form class="auth-form" id="login-form">
+          <div class="field">
+            <label for="login-email">E-mail</label>
+            <input
+              id="login-email"
+              name="email"
+              type="email"
+              placeholder="voce@jardim.com"
+              placeholder="voce@jardim.com"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="login-password">Senha</label>
+            <input
+              id="login-password"
+              name="password"
+              type="password"
+              placeholder="Sua senha local"
+              required
+            />
+          </div>
+
+          <button class="primary-button auth-submit" type="submit">
+            Entrar no app
+          </button>
+        </form>
+
+        <form class="auth-form is-hidden" id="signup-form">
+          <div class="field">
+            <label for="signup-name">Nome</label>
+            <input
+              id="signup-name"
+              name="name"
+              type="text"
+              placeholder="Seu nome"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="signup-email">E-mail</label>
+            <input
+              id="signup-email"
+              name="email"
+              type="email"
+              placeholder="voce@jardim.com"
+              required
+            />
+          </div>
+
+          <div class="field-grid auth-grid">
+            <div class="field">
+              <label for="signup-password">Senha</label>
+              <input
+                id="signup-password"
+                name="password"
+                type="password"
+                placeholder="Crie uma senha"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="signup-password-confirm">Confirmar senha</label>
+              <input
+                id="signup-password-confirm"
+                name="passwordConfirm"
+                type="password"
+                placeholder="Repita a senha"
+                required
+              />
+            </div>
+          </div>
+
+          <button class="primary-button auth-submit" type="submit">
+            Criar conta local
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <script defer src="js/core/store.js"></script>
+    <script defer src="js/core/auth.js"></script>
+    <script defer src="js/core/gamification.js"></script>
+    <script defer src="js/login.js"></script>
+  </body>
+</html>

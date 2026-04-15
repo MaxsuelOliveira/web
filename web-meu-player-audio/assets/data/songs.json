@@ -1,0 +1,35 @@
+[
+    {
+        "id": "yt-1",
+        "title": "I Lived",
+        "artist": "OneRepublic",
+        "album": "Native",
+        "genre": "Pop Rock",
+        "youtubeId": "z0rxydSolwU",
+        "cover": "https://i.ytimg.com/vi/z0rxydSolwU/hqdefault.jpg",
+        "translation": "Mensagem da faixa: viver de forma intensa, assumir riscos e carregar historias reais em vez de passar pela vida em modo automatico.",
+        "lyricsPreview": "Resumo poetico: uma celebracao da coragem, da memoria e das marcas que a vida deixa quando ela e realmente vivida."
+    },
+    {
+        "id": "yt-2",
+        "title": "Take On Me",
+        "artist": "a-ha",
+        "album": "Hunting High and Low",
+        "genre": "Synth-pop",
+        "youtubeId": "djV11Xbc914",
+        "cover": "https://i.ytimg.com/vi/djV11Xbc914/hqdefault.jpg",
+        "translation": "Mensagem da faixa: um convite direto para tentar, arriscar e transformar um momento rapido em algo memoravel.",
+        "lyricsPreview": "Resumo poetico: a musica combina urgencia romantica com energia leve, como se o tempo pedisse uma resposta agora."
+    },
+    {
+        "id": "yt-3",
+        "title": "Numb",
+        "artist": "Linkin Park",
+        "album": "Meteora",
+        "genre": "Rock Alternativo",
+        "youtubeId": "kXYiU_JCYtU",
+        "cover": "https://i.ytimg.com/vi/kXYiU_JCYtU/hqdefault.jpg",
+        "translation": "Mensagem da faixa: pressao, desgaste emocional e a tentativa de recuperar a propria identidade diante de expectativas externas.",
+        "lyricsPreview": "Resumo poetico: um desabafo sobre exaustao e desconexao, com foco no sentimento, nao na reproducao literal da letra."
+    }
+]

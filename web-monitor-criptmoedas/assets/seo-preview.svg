@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Crypto Pulse social preview">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1220" />
+      <stop offset="55%" stop-color="#131d31" />
+      <stop offset="100%" stop-color="#1c2740" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#67e8f9" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="36" fill="url(#bg)" />
+  <circle cx="965" cy="130" r="120" fill="#a855f7" fill-opacity="0.12" />
+  <circle cx="210" cy="520" r="180" fill="#67e8f9" fill-opacity="0.1" />
+  <rect x="80" y="88" width="470" height="454" rx="34" fill="#111a2a" stroke="#2d3b59" />
+  <rect x="112" y="132" width="160" height="18" rx="9" fill="#24324d" />
+  <rect x="112" y="176" width="258" height="72" rx="24" fill="#0f1727" stroke="#32415f" />
+  <rect x="112" y="270" width="190" height="16" rx="8" fill="#33435f" />
+  <rect x="112" y="306" width="302" height="16" rx="8" fill="#263550" />
+  <rect x="112" y="352" width="398" height="132" rx="26" fill="#0f1727" stroke="#32415f" />
+  <rect x="144" y="390" width="128" height="14" rx="7" fill="#4e6388" />
+  <rect x="144" y="420" width="216" height="18" rx="9" fill="url(#accent)" />
+  <rect x="144" y="456" width="152" height="14" rx="7" fill="#4e6388" />
+  <g transform="translate(632 124)">
+    <text x="0" y="0" fill="#9fb1cf" font-family="Arial, sans-serif" font-size="26" font-weight="700">Crypto Pulse</text>
+    <text x="0" y="76" fill="#f3f7ff" font-family="Arial, sans-serif" font-size="62" font-weight="700">Monitor de</text>
+    <text x="0" y="146" fill="#f3f7ff" font-family="Arial, sans-serif" font-size="62" font-weight="700">criptomoedas em</text>
+    <text x="0" y="216" fill="url(#accent)" font-family="Arial, sans-serif" font-size="62" font-weight="700">tempo real</text>
+    <text x="0" y="286" fill="#9fb1cf" font-family="Arial, sans-serif" font-size="28">Favoritas persistentes, alertas locais e visual mobile-first.</text>
+  </g>
+  <g transform="translate(632 454)">
+    <rect width="164" height="64" rx="22" fill="#151f33" stroke="#32415f" />
+    <rect x="184" width="164" height="64" rx="22" fill="#151f33" stroke="#32415f" />
+    <rect x="368" width="164" height="64" rx="22" fill="#151f33" stroke="#32415f" />
+    <text x="28" y="24" fill="#93a7c9" font-family="Arial, sans-serif" font-size="16">Mercado</text>
+    <text x="28" y="48" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="700">12 ativos</text>
+    <text x="212" y="24" fill="#93a7c9" font-family="Arial, sans-serif" font-size="16">Alertas</text>
+    <text x="212" y="48" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="700">Locais</text>
+    <text x="396" y="24" fill="#93a7c9" font-family="Arial, sans-serif" font-size="16">Tema</text>
+    <text x="396" y="48" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="700">Dark</text>
+  </g>
+</svg>

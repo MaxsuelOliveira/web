@@ -1,0 +1,47 @@
+:root {
+    --brand-forest-950: #082616;
+    --brand-forest-900: #0f3b26;
+    --brand-forest-800: #1a573a;
+    --brand-forest-700: #2d6a4f;
+    --brand-forest-500: #4f8a69;
+    --brand-leaf-500: #7abf61;
+    --brand-leaf-300: #cce8b8;
+    --accent-sun: #f6cf61;
+    --accent-coral: #ff8a5b;
+    --accent-mint: #74d3ae;
+    --surface-base: #f7faf5;
+    --surface-muted: #eef5eb;
+    --surface-card: rgba(255, 255, 255, 0.9);
+    --surface-soft: #f4f8f1;
+    --surface-dark: rgba(10, 40, 24, 0.88);
+    --border-soft: rgba(15, 59, 38, 0.1);
+    --border-strong: rgba(15, 59, 38, 0.2);
+    --text-primary: #153426;
+    --text-secondary: #314b3f;
+    --text-secondary-strong: #23392f;
+    --text-secondary-2: #d9e5dd;
+    --text-on-brand: #f5f7f2;
+    --text-on-brand-muted: rgba(245, 247, 242, 0.86);
+    --danger: #b5234e;
+    --warning: #9a5e00;
+    --shadow-card: 0 30px 60px rgba(10, 36, 24, 0.18);
+    --shadow-soft: 0 18px 42px rgba(15, 59, 38, 0.09);
+}
+
+body.theme-dark {
+    --surface-base: #08110d;
+    --surface-muted: #0d1813;
+    --surface-card: rgba(20, 30, 25, 0.94);
+    --surface-soft: #132019;
+    --surface-dark: rgba(7, 15, 11, 0.95);
+    --border-soft: rgba(219, 236, 224, 0.1);
+    --border-strong: rgba(219, 236, 224, 0.18);
+    --text-primary: #eef7f0;
+    --text-secondary: #cddcd1;
+    --text-secondary-strong: #e3efe6;
+    --text-secondary-2: #d8e7da;
+    --text-on-brand: #f5f7f2;
+    --text-on-brand-muted: rgba(245, 247, 242, 0.82);
+    --shadow-card: 0 32px 62px rgba(0, 0, 0, 0.32);
+    --shadow-soft: 0 18px 42px rgba(0, 0, 0, 0.24);
+}

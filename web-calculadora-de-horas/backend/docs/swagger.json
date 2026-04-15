@@ -1,0 +1,334 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Conversão de Datas e Horários",
+        "version": "1.0.0",
+        "description": "API para conversão de dias em horas, minutos, segundos, semanas, meses e anos, com CRUD completo e usuários temporários."
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3001"
+        }
+    ],
+    "paths": {
+        "/api/conversions": {
+            "get": {
+                "summary": "Lista todas as conversões",
+                "tags": [
+                    "Conversions"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de conversões",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Conversion"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cria uma nova conversão",
+                "tags": [
+                    "Conversions"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "days": {
+                                        "type": "integer"
+                                    },
+                                    "userId": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Conversão criada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Conversion"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    }
+                }
+            }
+        },
+        "/api/conversions/{id}": {
+            "get": {
+                "summary": "Busca uma conversão por ID",
+                "tags": [
+                    "Conversions"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Conversão encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Conversion"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Conversão não encontrada"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Atualiza uma conversão",
+                "tags": [
+                    "Conversions"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "days": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Conversão atualizada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Conversion"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    },
+                    "404": {
+                        "description": "Conversão não encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remove uma conversão",
+                "tags": [
+                    "Conversions"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Conversão removida"
+                    },
+                    "404": {
+                        "description": "Conversão não encontrada"
+                    }
+                }
+            }
+        },
+        "/api/conversions/user/{userId}": {
+            "get": {
+                "summary": "Lista o histórico de conversões de um usuário",
+                "tags": [
+                    "Conversions"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de conversões do usuário",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Conversion"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/temp": {
+            "post": {
+                "summary": "Cria um usuário temporário",
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Usuário criado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "summary": "Busca usuário por ID",
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Conversion": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "string"
+                    },
+                    "days": {
+                        "type": "integer"
+                    },
+                    "horas": {
+                        "type": "integer"
+                    },
+                    "minutos": {
+                        "type": "integer"
+                    },
+                    "segundos": {
+                        "type": "integer"
+                    },
+                    "semanas": {
+                        "type": "integer"
+                    },
+                    "meses": {
+                        "type": "integer"
+                    },
+                    "anos": {
+                        "type": "integer"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Conversions",
+            "description": "CRUD de conversões de datas"
+        },
+        {
+            "name": "Users",
+            "description": "Usuários temporários"
+        }
+    ]
+}

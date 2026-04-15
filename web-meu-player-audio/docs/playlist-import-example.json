@@ -1,0 +1,22 @@
+{
+    "playlists": [
+        {
+            "name": "Descobertas da semana",
+            "tracks": [
+                {
+                    "youtubeId": "z0rxydSolwU",
+                    "title": "I Lived",
+                    "artist": "OneRepublic",
+                    "genre": "Pop Rock",
+                    "translation": "Mensagem central: intensidade, memória e coragem para viver além do automático.",
+                    "lyricsPreview": "Resumo curto salvo localmente para contextualizar a faixa no player."
+                },
+                {
+                    "youtubeId": "djV11Xbc914",
+                    "title": "Take On Me",
+                    "artist": "a-ha",
+                    "genre": "Synth-pop"
+                }
+            ]
+        }
+    ]

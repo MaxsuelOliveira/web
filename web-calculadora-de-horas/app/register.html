@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar Usuário - Conversor de Tempo</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div class="register-header">
+      <button
+        type="button"
+        id="themeToggle"
+        class="theme-toggle"
+        title="Alternar tema"
+      >
+        🌙
+      </button>
+    </div>
+
+    <!-- Tela de Registro -->
+    <div id="registerScreen" class="register-screen">
+      <div class="register-container">
+        <!-- Conteúdo -->
+        <div class="register-content">
+          <div class="register-icon">👤</div>
+          <div>
+            <h1>Criar Usuário</h1>
+            <p>Preencha os dados abaixo para criar sua conta</p>
+          </div>
+
+          <!-- Formulário -->
+          <form id="registerForm" class="register-form">
+            <div class="form-group">
+              <label for="nameInput">Nome</label>
+              <input
+                type="text"
+                id="nameInput"
+                class="form-input"
+                placeholder="Digite seu nome"
+                required
+                minlength="3"
+                maxlength="100"
+              />
+              <small class="form-hint">Mínimo 3 caracteres</small>
+            </div>
+
+            <div class="form-group">
+              <label for="emailInput">Email (Opcional)</label>
+              <input
+                type="email"
+                id="emailInput"
+                class="form-input"
+                placeholder="seu@email.com"
+              />
+              <small class="form-hint">Usado para recuperar sua conta</small>
+            </div>
+
+            <!-- Spinner -->
+            <div class="loading-spinner hidden" id="loadingSpinner"></div>
+
+            <!-- Botões -->
+            <div class="register-buttons">
+              <button
+                type="submit"
+                class="btn btn-primary register-btn"
+                id="submitBtn"
+              >
+                Criar Usuário
+              </button>
+              <button
+                type="button"
+                class="btn btn-transparent register-btn"
+                onclick="voltarParaSplash()"
+              >
+                Voltar
+              </button>
+            </div>
+
+            <p class="register-link">
+              Prefere continuar sem criar usuário?
+              <a href="index.html">Ir para Splash</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notificações -->
+    <div id="notification" class="notification"></div>
+
+    <script src="js/register.js"></script>
+  </body>
+</html>

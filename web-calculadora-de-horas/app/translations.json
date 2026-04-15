@@ -1,0 +1,119 @@
+{
+    "pt": {
+        "header": {
+            "userName": "Usuário",
+            "changeUser": "Trocar usuário",
+            "toggleTheme": "Alternar modo escuro"
+        },
+        "main": {
+            "title": "⏱️ Conversor de Tempo",
+            "subtitle": "Converta dias em outras unidades",
+            "horas": "Horas",
+            "minutos": "Minutos",
+            "segundos": "Segundos",
+            "semanas": "Semanas",
+            "meses": "Meses",
+            "anos": "Anos"
+        },
+        "buttons": {
+            "save": "💾 Salvar Conversão",
+            "delete": "🗑️ Deletar",
+            "export": "📥 CSV"
+        },
+        "history": {
+            "title": "📋 Seu Histórico",
+            "empty": "Nenhuma conversão salva ainda"
+        },
+        "notifications": {
+            "saved": "✓ Conversão salva com sucesso!",
+            "deleted": "✓ Conversão deletada!",
+            "exported": "✓ Histórico exportado com sucesso!",
+            "deleteConfirm": "Tem certeza que deseja deletar esta conversão?",
+            "noData": "⚠️ Nenhuma conversão para exportar!",
+            "saving": "Salvando...",
+            "loading": "Carregando...",
+            "deleting": "Deletando...",
+            "error": "Erro ao salvar: ",
+            "deleteError": "Erro ao deletar: "
+        },
+        "language": "Português"
+    },
+    "en": {
+        "header": {
+            "userName": "User",
+            "changeUser": "Change user",
+            "toggleTheme": "Toggle dark mode"
+        },
+        "main": {
+            "title": "⏱️ Time Unit Converter",
+            "subtitle": "Convert days to other units",
+            "horas": "Hours",
+            "minutos": "Minutes",
+            "segundos": "Seconds",
+            "semanas": "Weeks",
+            "meses": "Months",
+            "anos": "Years"
+        },
+        "buttons": {
+            "save": "💾 Save Conversion",
+            "delete": "🗑️ Delete",
+            "export": "📥 CSV"
+        },
+        "history": {
+            "title": "📋 Your History",
+            "empty": "No conversions saved yet"
+        },
+        "notifications": {
+            "saved": "✓ Conversion saved successfully!",
+            "deleted": "✓ Conversion deleted!",
+            "exported": "✓ History exported successfully!",
+            "deleteConfirm": "Are you sure you want to delete this conversion?",
+            "noData": "⚠️ No conversions to export!",
+            "saving": "Saving...",
+            "loading": "Loading...",
+            "deleting": "Deleting...",
+            "error": "Error saving: ",
+            "deleteError": "Error deleting: "
+        },
+        "language": "English"
+    },
+    "es": {
+        "header": {
+            "userName": "Usuario",
+            "changeUser": "Cambiar usuario",
+            "toggleTheme": "Alternar modo oscuro"
+        },
+        "main": {
+            "title": "⏱️ Convertidor de Unidades de Tiempo",
+            "subtitle": "Convierte días a otras unidades",
+            "horas": "Horas",
+            "minutos": "Minutos",
+            "segundos": "Segundos",
+            "semanas": "Semanas",
+            "meses": "Meses",
+            "anos": "Años"
+        },
+        "buttons": {
+            "save": "💾 Guardar Conversión",
+            "delete": "🗑️ Eliminar",
+            "export": "📥 CSV"
+        },
+        "history": {
+            "title": "📋 Tu Historial",
+            "empty": "Ninguna conversión guardada aún"
+        },
+        "notifications": {
+            "saved": "✓ ¡Conversión guardada correctamente!",
+            "deleted": "✓ ¡Conversión eliminada!",
+            "exported": "✓ ¡Historial exportado correctamente!",
+            "deleteConfirm": "¿Está seguro de que desea eliminar esta conversión?",
+            "noData": "⚠️ ¡No hay conversiones para exportar!",
+            "saving": "Guardando...",
+            "loading": "Cargando...",
+            "deleting": "Eliminando...",
+            "error": "Error al guardar: ",
+            "deleteError": "Error al eliminar: "
+        },
+        "language": "Español"
+    }
+}

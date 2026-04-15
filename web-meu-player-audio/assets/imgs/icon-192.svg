@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="Meu Player Audio">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#86a0ff"/>
+      <stop offset="50%" stop-color="#7ed6ff"/>
+      <stop offset="100%" stop-color="#11151d"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="48" fill="#0b0c10"/>
+  <rect x="18" y="18" width="156" height="156" rx="40" fill="url(#bg)" opacity="0.22"/>
+  <circle cx="96" cy="96" r="50" fill="#11151d" stroke="#eef2ff" stroke-opacity="0.18"/>
+  <circle cx="96" cy="96" r="12" fill="#eef2ff"/>
+  <path d="M118 62v46.5c0 10.5-8 18.5-19.5 18.5S79 120.5 79 112s8-15 18-15c4.3 0 7.8 0.8 11 2.4V76l-28 8.3V70.8L118 62z" fill="#eef2ff"/>
+</svg>

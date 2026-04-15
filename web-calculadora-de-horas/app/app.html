@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversor de Unidades de Tempo</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  </head>
+
+  <body>
+    <!-- APP PRINCIPAL -->
+    <div id="appContainer" class="app-container">
+      <!-- Header com Nome do Usuário -->
+      <header class="app-header">
+        <div class="profile-section">
+          <div class="profile-avatar">👤</div>
+          <div class="profile-info">
+            <p class="profile-name" id="userName">Usuário</p>
+            <small id="userId" class="profile-id">ID</small>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button
+            type="button"
+            id="themeToggle"
+            class="theme-toggle"
+            title="Alternar tema"
+            onclick="
+              toggleTheme();
+              return false;
+            "
+          >
+            🌙
+          </button>
+
+          <select
+            id="languageSelector"
+            class="language-selector"
+            onchange="changeLanguage(this.value)"
+            title="Selecionar idioma"
+          >
+            <option value="pt">PT</option>
+            <option value="en">EN</option>
+            <option value="es">ES</option>
+          </select>
+
+          <button
+            type="button"
+            class="btn-logout"
+            onclick="
+              novoUsuario();
+              return false;
+            "
+            title="Trocar usuário"
+          >
+            🚪
+          </button>
+        </div>
+      </header>
+
+      <!-- Conteúdo Principal -->
+      <main class="app-content">
+        <div class="app-main">
+          <div class="section-title">
+            <h1>⏱️ Conversor de Tempo</h1>
+            <p>Converta dias em outras unidades</p>
+          </div>
+
+          <div class="converter-section">
+            <!-- Resultados (Agora Funcionais) -->
+            <div class="results">
+              <div class="result-grid">
+                <div class="result-card">
+                  <input
+                    type="number"
+                    id="segundosResult"
+                    class="result-input"
+                    value="0"
+                    min="0"
+                    placeholder="0"
+                    onchange="converterDeSegundos()"
+                  />
+                  <span class="result-label">Segundos</span>
+                </div>
+
+                <div class="result-card">
+                  <input
+                    type="number"
+                    id="minutosResult"
+                    class="result-input"
+                    value="0"
+                    min="0"
+                    placeholder="0"
+                    onchange="converterDeMinutos()"
+                  />
+                  <span class="result-label">Minutos</span>
+                </div>
+
+                <div class="result-card">
+                  <input
+                    type="number"
+                    id="horasResult"
+                    class="result-input"
+                    value="0"
+                    min="0"
+                    placeholder="0"
+                    onchange="converterDeHoras()"
+                  />
+                  <span class="result-label">Horas</span>
+                </div>
+
+                <!-- dias -->
+                <div class="result-card">
+                  <input
+                    type="number"
+                    id="diasResult"
+                    class="result-input"
+                    value="0"
+                    min="0"
+                    placeholder="0"
+                    onchange="converterDeDias()"
+                  />
+                  <span class="result-label">Dias</span>
+                </div>
+
+                <div class="result-card">
+                  <input
+                    type="number"
+                    id="semanasResult"
+                    class="result-input"
+                    value="0"
+                    min="0"
+                    placeholder="0"
+                    onchange="converterDeSemanas()"
+                  />
+                  <span class="result-label">Semanas</span>
+                </div>
+
+                <div class="result-card">
+                  <input
+                    type="number"
+                    id="mesesResult"
+                    class="result-input"
+                    value="0"
+                    min="0"
+                    placeholder="0"
+                    onchange="converterDeMeses()"
+                  />
+                  <span class="result-label">Meses</span>
+                </div>
+
+                <div class="result-card">
+                  <input
+                    type="number"
+                    id="anosResult"
+                    class="result-input"
+                    value="0"
+                    min="0"
+                    placeholder="0"
+                    onchange="converterDeAnos()"
+                  />
+                  <span class="result-label">Anos</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botão Salvar Conversão -->
+            <div class="button-container">
+              <button
+                type="button"
+                class="btn btn-primary btn-large hidden"
+                id="salvarBtn"
+              >
+                💾 Salvar Conversão
+              </button>
+            </div>
+          </div>
+
+          <!-- Histórico -->
+          <section class="history-section hidden" id="historySection">
+            <div class="history-header">
+              <h2>📋 Seu Histórico</h2>
+              <button
+                type="button"
+                class="btn btn-secondary btn-small"
+                id="exportBtn"
+                title="Baixar histórico em CSV"
+              >
+                📥 CSV
+              </button>
+            </div>
+            <div class="history-list" id="historyList">
+              <p class="empty-state">Nenhuma conversão salva ainda</p>
+            </div>
+          </section>
+
+          <!-- Gráficos de Tendências -->
+          <section class="charts-section hidden" id="chartsSection">
+            <h2>📊 Tendências</h2>
+            <div class="charts-container">
+              <div class="chart-wrapper">
+                <canvas id="trendChart"></canvas>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="distributionChart"></canvas>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <!-- Notificações -->
+    <div id="notification" class="notification"></div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

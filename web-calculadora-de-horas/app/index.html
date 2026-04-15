@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversor de Unidades de Tempo</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- SPLASH SCREEN -->
+    <div id="splashScreen" class="splash-screen">
+      <div class="splash-header">
+        <button
+          type="button"
+          id="themeToggle"
+          class="theme-toggle"
+          title="Alternar tema"
+        >
+          🌙
+        </button>
+      </div>
+      <div class="splash-container">
+        <!-- Slide 1: Bem vindo -->
+        <div class="splash-slide" id="slide1">
+          <div class="splash-content">
+            <div class="splash-icon">⏱️</div>
+            <h1>Conversor de Tempo</h1>
+            <p>Converta dias em várias unidades</p>
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary splash-btn"
+            onclick="
+              proximoSlide();
+              return false;
+            "
+          >
+            Começar
+          </button>
+        </div>
+
+        <!-- Slide 2: Sobre -->
+        <div class="splash-slide hidden" id="slide2">
+          <div class="splash-content">
+            <h2>Como Funciona</h2>
+            <p>Digite quantos dias deseja converter e veja os resultados em:</p>
+            <div class="units-list">
+              <div class="unit-item">Horas</div>
+              <div class="unit-item">Minutos</div>
+              <div class="unit-item">Segundos</div>
+              <div class="unit-item">Semanas</div>
+              <div class="unit-item">Meses</div>
+              <div class="unit-item">Anos</div>
+            </div>
+            <p>Salve todas as suas conversões no histórico.</p>
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary splash-btn"
+            onclick="
+              proximoSlide();
+              return false;
+            "
+          >
+            Próximo
+          </button>
+        </div>
+
+        <!-- Slide 3: Opções -->
+        <div class="splash-slide hidden" id="slide3">
+          <div class="splash-content">
+            <h2>Tudo Pronto!</h2>
+            <p>Você pode começar a converter agora</p>
+            <p class="slide-subtitle">
+              Crie um usuário quando quiser salvar suas conversões
+            </p>
+            <div class="loading-spinner hidden" id="loadingSpinner"></div>
+          </div>
+          <div class="splash-buttons-container">
+            <button
+              type="button"
+              class="btn btn-primary splash-btn"
+              id="entrarBtn"
+            >
+              Começar
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary splash-btn"
+              onclick="
+                window.location.href = 'register.html';
+                return false;
+              "
+            >
+              Criar Usuário
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notificações -->
+    <div id="notification" class="notification"></div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

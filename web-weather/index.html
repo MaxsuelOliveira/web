@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Widget de previsão do tempo com busca por CEP e geolocalização do usuário."
+    />
+    <title>Previsão do Tempo</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js?v=6" defer></script>
+  </head>
+  <body>
+    <main class="weather-container">
+      <section class="weather-panel" aria-label="Widget de previsão do tempo">
+        <div class="weather-toolbar">
+          <button id="useLocationButton" class="toolbar-button" type="button">
+            <i class="bi bi-crosshair"></i>
+            Minha localização
+          </button>
+
+          <form id="cepForm" class="weather-search" autocomplete="off">
+            <label class="sr-only" for="cepInput">Digite um CEP</label>
+            <input
+              id="cepInput"
+              name="cep"
+              type="text"
+              inputmode="numeric"
+              maxlength="9"
+              placeholder="Digite seu CEP"
+            />
+            <button type="submit">Buscar</button>
+          </form>
+        </div>
+
+        <p id="statusMessage" class="weather-status" aria-live="polite">
+          Carregando a previsão...
+        </p>
+
+        <div class="weather-header">
+          <i class="bi bi-geo-alt-fill"></i>
+
+          <div class="weather-intro">
+            <span id="locationName" class="weather-intro-text"
+              >Barreiras, Bahia</span
+            >
+            <span id="locationDate" class="weather-intro-description">
+              Buscando sua localização atual...
+            </span>
+          </div>
+        </div>
+
+        <div class="weather-info">
+          <h1 id="currentTemperature">--°C</h1>
+          <div class="weather-scene" aria-hidden="true">
+            <span class="weather-scene-orb"></span>
+            <span class="weather-scene-cloud weather-scene-cloud--one"></span>
+            <span class="weather-scene-cloud weather-scene-cloud--two"></span>
+            <span class="weather-scene-rain"></span>
+            <span class="weather-scene-rain weather-scene-rain--late"></span>
+            <span class="weather-scene-snow"></span>
+            <span class="weather-scene-lightning"></span>
+          </div>
+          <div
+            id="weatherIllustration"
+            class="weather"
+            aria-hidden="true"
+          ></div>
+          <p id="currentCondition" class="weather-condition">
+            Aguardando dados
+          </p>
+        </div>
+
+        <div class="weather-details">
+          <article class="weather-details-item">
+            <div>
+              <img
+                class="weather-details-icon weather-details-icon--humidity"
+                src="./assets/icons/007-night.png"
+                alt="Ícone de umidade"
+                width="50"
+              />
+              <span class="weather-details-item-title">Umidade</span>
+              <small id="humidityValue" class="weather-details-item-value"
+                >--%</small
+              >
+            </div>
+          </article>
+
+          <article class="weather-details-item">
+            <div>
+              <img
+                class="weather-details-icon weather-details-icon--pressure"
+                src="./assets/icons/004-hailstorm.png"
+                alt="Ícone de pressão"
+                width="50"
+              />
+              <span class="weather-details-item-title">Pressão</span>
+              <small id="pressureValue" class="weather-details-item-value"
+                >-- hPa</small
+              >
+            </div>
+          </article>
+
+          <article class="weather-details-item weather-details-item--summary">
+            <div>
+              <img
+                id="summaryIcon"
+                class="weather-summary-icon"
+                src="./assets/icons/002-cloudy-day.png"
+                alt="Ícone do clima atual"
+                width="60"
+              />
+              <strong id="feelsLikeValue">--°C</strong>
+            </div>
+            <div>
+              <span id="summaryTitle" class="weather-details-item-title"
+                >Sensação térmica</span
+              >
+              <small id="summaryRegion" class="weather-details-item-value"
+                >Brasil</small
+              >
+              <small id="updatedAt" class="weather-details-item-value"
+                >Atualizando...</small
+              >
+            </div>
+          </article>
+        </div>
+
+        <div class="weather-forecast">
+          <div class="weather-forecast-header">
+            <h2>Próximas horas</h2>
+            <div class="weather-forecast-actions">
+              <button
+                id="forecastPrevButton"
+                class="forecast-nav-button"
+                type="button"
+                aria-label="Ver horas anteriores"
+              >
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <button id="refreshButton" type="button">Atualizar</button>
+              <button
+                id="forecastNextButton"
+                class="forecast-nav-button"
+                type="button"
+                aria-label="Ver próximas horas"
+              >
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="weather-forecast-slider">
+            <div id="forecastList" class="weather-forecast-content">
+              <div
+                class="weather-forecast-item weather-forecast-item--placeholder"
+              >
+                <b>--:--</b>
+                <img
+                  src="./assets/icons/002-cloudy-day.png"
+                  alt="Ícone de clima"
+                  width="60"
+                />
+                <span>--°C</span>
+              </div>
+
+              <div
+                class="weather-forecast-item weather-forecast-item--placeholder"
+              >
+                <b>--:--</b>
+                <img
+                  src="./assets/icons/002-cloudy-day.png"
+                  alt="Ícone de clima"
+                  width="60"
+                />
+                <span>--°C</span>
+              </div>
+
+              <div
+                class="weather-forecast-item weather-forecast-item--placeholder"
+              >
+                <b>--:--</b>
+                <img
+                  src="./assets/icons/002-cloudy-day.png"
+                  alt="Ícone de clima"
+                  width="60"
+                />
+                <span>--°C</span>
+              </div>
+
+              <div
+                class="weather-forecast-item weather-forecast-item--placeholder"
+              >
+                <b>--:--</b>
+                <img
+                  src="./assets/icons/002-cloudy-day.png"
+                  alt="Ícone de clima"
+                  width="60"
+                />
+                <span>--°C</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

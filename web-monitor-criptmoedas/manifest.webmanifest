@@ -1,0 +1,9 @@
+{
+    "name": "Crypto Pulse",
+    "short_name": "Pulse",
+    "description": "Monitor de criptomoedas com favoritos persistentes e alertas locais de preço.",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#08111f",
+    "theme_color": "#08111f"
+}

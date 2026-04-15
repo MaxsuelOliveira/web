@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Monitor Hub</title>
+    <link
+      href="assets/vendor/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="app-bg"></div>
+    <main class="app-shell">
+      <section class="dashboard-shell">
+        <header class="dashboard-header">
+          <div class="header-row">
+            <div class="header-actions">
+              <div class="glow-badge compact-badge">
+                <i class="bi bi-pc-display"></i>
+                <span id="host-name">Detectando host</span>
+              </div>
+              <div class="status-pill compact-badge">
+                <span class="status-dot" id="api-status-dot"></span>
+                <span id="api-status-text"
+                  >Conectando ao servidor local...</span
+                >
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div class="dashboard-grid">
+          <section class="panel panel-highlight panel-left">
+            <div class="section-head">
+              <div>
+                <span class="eyebrow">visao geral</span>
+                <h2 class="panel-title">Leitura instantanea</h2>
+              </div>
+              <span class="mini-chip" data-field="cpu-cores">-- nucleos</span>
+            </div>
+
+            <div class="stats-grid compact-grid" id="stats-grid">
+              <article class="metric-card metric-cpu">
+                <div class="metric-icon"><i class="bi bi-cpu-fill"></i></div>
+                <div>
+                  <span class="metric-label">CPU</span>
+                  <strong class="metric-value" data-field="cpu-percent"
+                    >--%</strong
+                  >
+                  <small class="metric-meta" data-field="cpu-temp"
+                    >Temperatura indisponivel</small
+                  >
+                </div>
+              </article>
+
+              <article class="metric-card metric-memory">
+                <div class="metric-icon"><i class="bi bi-memory"></i></div>
+                <div>
+                  <span class="metric-label">Memoria</span>
+                  <strong class="metric-value" data-field="memory-percent"
+                    >--%</strong
+                  >
+                  <small class="metric-meta" data-field="memory-used">--</small>
+                </div>
+              </article>
+
+              <article class="metric-card metric-disk">
+                <div class="metric-icon">
+                  <i class="bi bi-device-ssd-fill"></i>
+                </div>
+                <div>
+                  <span class="metric-label">Disco</span>
+                  <strong class="metric-value" data-field="disk-percent"
+                    >--%</strong
+                  >
+                  <small class="metric-meta" data-field="disk-used">--</small>
+                </div>
+              </article>
+
+              <article class="metric-card metric-network">
+                <div class="metric-icon"><i class="bi bi-wifi"></i></div>
+                <div>
+                  <span class="metric-label">Rede</span>
+                  <strong class="metric-value" data-field="network-status"
+                    >--</strong
+                  >
+                  <small class="metric-meta" data-field="network-throughput"
+                    >--</small
+                  >
+                </div>
+              </article>
+            </div>
+
+            <article class="chart-card grow-card">
+              <div class="section-head tight-head">
+                <div>
+                  <span class="eyebrow">historico</span>
+                  <h3 class="feature-title">Ultimos ciclos</h3>
+                </div>
+                <span class="mini-chip compact-chip">30 amostras</span>
+              </div>
+
+              <div class="history-grid">
+                <div class="history-item">
+                  <div class="history-item__head">
+                    <div>
+                      <small>CPU</small>
+                      <strong data-field="chart-cpu-current">--%</strong>
+                    </div>
+                    <span>uso</span>
+                  </div>
+                  <canvas
+                    id="cpu-history-chart"
+                    class="history-canvas"
+                  ></canvas>
+                </div>
+
+                <div class="history-item">
+                  <div class="history-item__head">
+                    <div>
+                      <small>Memoria</small>
+                      <strong data-field="chart-memory-current">--%</strong>
+                    </div>
+                    <span>pressao</span>
+                  </div>
+                  <canvas
+                    id="memory-history-chart"
+                    class="history-canvas"
+                  ></canvas>
+                </div>
+
+                <div class="history-item">
+                  <div class="history-item__head">
+                    <div>
+                      <small>Rede</small>
+                      <strong data-field="chart-network-current">--</strong>
+                    </div>
+                    <span>trafego</span>
+                  </div>
+                  <canvas
+                    id="network-history-chart"
+                    class="history-canvas"
+                  ></canvas>
+                </div>
+              </div>
+            </article>
+
+            <article class="spotlight-card">
+              <div class="section-head tight-head">
+                <div>
+                  <span class="eyebrow">processamento</span>
+                  <h3 class="spotlight-title">Carga por nucleo</h3>
+                </div>
+              </div>
+              <div
+                class="core-grid compact-core-grid scroll-area"
+                id="core-grid"
+              ></div>
+            </article>
+          </section>
+
+          <section class="panel panel-middle">
+            <div class="section-head">
+              <div>
+                <span class="eyebrow">sinais da maquina</span>
+                <h2 class="panel-title">Contexto e atividade</h2>
+              </div>
+            </div>
+
+            <article class="feature-card slim-card">
+              <div class="feature-card__header compact-header">
+                <div class="feature-stat feature-stat--compact">
+                  <strong data-field="platform-name">--</strong>
+                  <span data-field="platform-version">--</span>
+                </div>
+                <i class="bi bi-windows feature-symbol"></i>
+              </div>
+              <div class="feature-meta-grid compact-meta-grid">
+                <div>
+                  <small>Uptime</small>
+                  <span data-field="uptime">--</span>
+                </div>
+                <div>
+                  <small>IP local</small>
+                  <span data-field="local-ip">--</span>
+                </div>
+                <div>
+                  <small>Bateria</small>
+                  <span data-field="battery">--</span>
+                </div>
+                <div>
+                  <small>Usuario</small>
+                  <span data-field="user-name">--</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="player-card slim-card">
+              <div class="section-head tight-head">
+                <div>
+                  <span class="eyebrow">transferencia</span>
+                  <h3 class="feature-title">Entrada e saida</h3>
+                </div>
+                <div class="bars" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="transfer-grid">
+                <div class="transfer-card compact-transfer-card">
+                  <div>
+                    <small>Upload</small>
+                    <strong data-field="upload-speed">--</strong>
+                  </div>
+                  <i class="bi bi-arrow-up-right-circle"></i>
+                </div>
+                <div class="transfer-card compact-transfer-card">
+                  <div>
+                    <small>Download</small>
+                    <strong data-field="download-speed">--</strong>
+                  </div>
+                  <i class="bi bi-arrow-down-left-circle"></i>
+                </div>
+              </div>
+            </article>
+
+            <article class="feature-card process-card grow-card">
+              <div class="section-head tight-head">
+                <div>
+                  <span class="eyebrow">top processos</span>
+                  <h3 class="feature-title">Consumo agora</h3>
+                </div>
+                <span class="mini-chip" data-field="process-count"
+                  >0 ativos</span
+                >
+              </div>
+              <div
+                class="process-list compact-process-list scroll-area"
+                id="process-list"
+              ></div>
+            </article>
+
+            <article class="feature-card slim-card integrations-card">
+              <div class="section-head tight-head">
+                <div>
+                  <span class="eyebrow">integracoes</span>
+                  <h3 class="feature-title">Google e conexoes</h3>
+                </div>
+                <span class="mini-chip" data-field="google-status-badge"
+                  >setup</span
+                >
+              </div>
+              <div class="integration-row">
+                <div>
+                  <strong
+                    class="integration-title"
+                    data-field="google-status-title"
+                    >Google nao configurado</strong
+                  >
+                  <p
+                    class="integration-copy"
+                    data-field="google-status-description"
+                  >
+                    Adicione client id e secret para liberar o login local.
+                  </p>
+                </div>
+                <a
+                  id="google-auth-link"
+                  class="action-link disabled"
+                  href="#"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Conectar</a
+                >
+              </div>
+            </article>
+          </section>
+
+          <section class="panel panel-right">
+            <div class="top-right-grid">
+              <article class="calendar-card mini-card">
+                <small class="eyebrow">agora</small>
+                <h3 class="clock-value" id="clock-time">--:--</h3>
+                <p class="calendar-date" id="clock-date">Carregando data...</p>
+              </article>
+
+              <article class="summary-card mini-card summary-card--compact">
+                <div class="summary-card__content">
+                  <span class="eyebrow">saude</span>
+                  <h3 class="feature-title">Estado geral</h3>
+                  <p class="summary-text" id="summary-text">
+                    Aguardando primeira leitura do servidor local...
+                  </p>
+                </div>
+                <div class="summary-ring">
+                  <span id="summary-ring-value">--</span>
+                </div>
+              </article>
+            </div>
+
+            <article class="tasks-card grow-card">
+              <div class="section-head tight-head">
+                <div>
+                  <span class="eyebrow">checklist</span>
+                  <h3 class="feature-title">Saude operacional</h3>
+                </div>
+                <span class="completion-pill" id="health-score">--</span>
+              </div>
+              <ul
+                class="health-list compact-health-list scroll-area"
+                id="health-list"
+              ></ul>
+            </article>
+
+            <article class="feature-card automations-card grow-card">
+              <div class="section-head tight-head">
+                <div>
+                  <span class="eyebrow">automacoes</span>
+                  <h3 class="feature-title">Rotinas sugeridas</h3>
+                </div>
+                <span class="mini-chip" data-field="automation-count"
+                  >0 rotinas</span
+                >
+              </div>
+              <div
+                class="automation-list scroll-area"
+                id="automation-list"
+              ></div>
+            </article>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

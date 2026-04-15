@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meu Player</title>
+    <meta name="theme-color" content="#0b0c10" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="ambient-backdrop"></div>
+
+    <div id="splashscreen" class="splashscreen">
+      <div class="splashscreen__panel">
+        <div id="splash-art" class="splashscreen__art" aria-hidden="true"></div>
+        <div class="splashscreen__content">
+          <p id="splash-eyebrow" class="eyebrow">Player Curado</p>
+          <h1 id="splash-title" class="splashscreen__title">
+            Meu Player Audio
+          </h1>
+          <p id="splash-copy" class="splashscreen__copy">
+            Uma vitrine premium para ouvir, organizar e acompanhar cada faixa
+            com mais presença visual.
+          </p>
+          <div
+            id="splash-dots"
+            class="splashscreen__dots"
+            aria-label="Etapas de introdução"
+          ></div>
+        </div>
+        <div class="splashscreen__actions">
+          <button id="splash-prev" class="splashscreen__ghost" type="button">
+            Voltar
+          </button>
+          <button id="splash-next" class="splashscreen__button" type="button">
+            Próximo
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-music">
+      <main class="player-layout">
+        <section class="hero-panel">
+          <div class="cover-animation" aria-hidden="true"></div>
+
+          <div class="cover-meta">
+            <h2 class="title">Carregando...</h2>
+            <p class="artist">Aguarde</p>
+            <p id="track-translation" class="translation-copy">
+              Resumo e traducao configuravel aparecerao aqui.
+            </p>
+          </div>
+        </section>
+
+        <section class="library-panel">
+          <section class="playlist-panel">
+            <div class="playlist-header">
+              <div>
+                <p class="panel-kicker">Fila atual</p>
+                <p id="playlist-title">Playlist online</p>
+                <span id="playlist-count">0 faixas</span>
+              </div>
+              <div class="playlist-header__aside">
+                <div
+                  id="local-sources"
+                  class="local-sources local-sources--top"
+                ></div>
+                <span id="repeat-state" class="repeat-state">Repetir tudo</span>
+              </div>
+            </div>
+
+            <section class="playlist-studio">
+              <div id="local-source-actions" class="local-source-actions"></div>
+
+              <div class="playlist-builder playlist-builder--compact">
+                <p
+                  id="playlist-builder-status"
+                  class="playlist-builder__status"
+                ></p>
+              </div>
+
+              <input
+                id="playlist-import-input"
+                type="file"
+                accept="application/json,.json"
+                hidden
+              />
+              <input
+                id="library-backup-input"
+                type="file"
+                accept="application/json,.json"
+                hidden
+              />
+            </section>
+
+            <p id="empty-local-message" class="empty-state is-hidden">
+              Importe arquivos MP3, WAV ou OGG para tocar localmente.
+            </p>
+
+            <ul id="playlist" class="playlist"></ul>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer-player footer-player--desktop">
+      <div class="footer-player__inner">
+        <div class="controls-shell">
+          <div class="controls-row">
+            <div class="controls">
+              <button
+                id="repeat-toggle"
+                class="icon-button"
+                type="button"
+                aria-label="Alterar repetição"
+              >
+                <i class="fa-solid fa-repeat"></i>
+              </button>
+              <button
+                id="backward"
+                class="icon-button"
+                type="button"
+                aria-label="Música anterior"
+              >
+                <i class="fa-solid fa-backward-step"></i>
+              </button>
+              <button
+                id="play"
+                class="icon-button icon-button--primary"
+                type="button"
+                aria-label="Tocar"
+              >
+                <i class="fa-solid fa-play"></i>
+              </button>
+              <button
+                id="pause"
+                class="icon-button icon-button--primary is-hidden"
+                type="button"
+                aria-label="Pausar"
+              >
+                <i class="fa-solid fa-pause"></i>
+              </button>
+              <button
+                id="forward"
+                class="icon-button"
+                type="button"
+                aria-label="Próxima música"
+              >
+                <i class="fa-solid fa-forward-step"></i>
+              </button>
+            </div>
+
+            <div class="progress">
+              <div id="youtube-player" aria-hidden="true"></div>
+              <span id="time-player">0:00</span>
+              <input
+                id="player-slide"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                aria-label="Progresso da música"
+              />
+              <span id="time-end">0:00</span>
+            </div>
+
+            <div class="volume-box">
+              <button
+                id="mute-toggle"
+                class="icon-button"
+                type="button"
+                aria-label="Ativar ou desativar volume"
+              >
+                <i class="fa-solid fa-volume-high"></i>
+              </button>
+              <div class="volume-reveal">
+                <input
+                  id="volume-slider"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="85"
+                  aria-label="Volume"
+                />
+              </div>
+            </div>
+
+            <div class="footer-side">
+              <div class="footer-dock" aria-label="Ações da biblioteca">
+                <button
+                  id="open-library-screen"
+                  class="footer-dock__button"
+                  type="button"
+                  title="Abrir biblioteca premium"
+                  aria-label="Abrir biblioteca premium"
+                >
+                  <i class="fa-solid fa-layer-group"></i>
+                </button>
+                <button
+                  id="open-create-playlist"
+                  class="footer-dock__button"
+                  type="button"
+                  title="Criar playlist"
+                  aria-label="Criar playlist"
+                >
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+                <button
+                  id="open-import-playlist"
+                  class="footer-dock__button"
+                  type="button"
+                  title="Importar playlist JSON"
+                  aria-label="Importar playlist JSON"
+                >
+                  <i class="fa-solid fa-file-import"></i>
+                </button>
+                <button
+                  id="install-app-button"
+                  class="footer-dock__button is-hidden"
+                  type="button"
+                  title="Instalar app"
+                  aria-label="Instalar app"
+                >
+                  <i class="fa-solid fa-download"></i>
+                </button>
+                <label
+                  class="footer-dock__button footer-dock__button--upload"
+                  for="local-file-input"
+                  title="Importar músicas"
+                  aria-label="Importar músicas"
+                >
+                  <i class="fa-solid fa-file-audio"></i>
+                </label>
+                <label
+                  class="footer-dock__button footer-dock__button--upload"
+                  for="local-folder-input"
+                  title="Importar pasta de músicas"
+                  aria-label="Importar pasta de músicas"
+                >
+                  <i class="fa-solid fa-folder-open"></i>
+                </label>
+                <input
+                  id="local-file-input"
+                  type="file"
+                  accept="audio/*"
+                  multiple
+                  hidden
+                />
+                <input
+                  id="local-folder-input"
+                  type="file"
+                  webkitdirectory
+                  directory
+                  multiple
+                  hidden
+                />
+              </div>
+
+              <div class="footer-side__bottom">
+                <div
+                  class="library-switch"
+                  role="tablist"
+                  aria-label="Bibliotecas"
+                >
+                  <button
+                    id="show-online"
+                    class="library-button is-active"
+                    type="button"
+                  >
+                    Online
+                  </button>
+                  <button id="show-local" class="library-button" type="button">
+                    Local
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <footer class="footer-player-mobile" aria-label="Player mobile">
+      <div class="footer-player-mobile__inner">
+        <div class="mobile-now-playing">
+          <div class="mobile-now-playing__copy">
+            <span id="mobile-track-context" class="mobile-now-playing__context"
+              >Playlist online</span
+            >
+            <strong id="mobile-track-title">Carregando...</strong>
+            <span id="mobile-track-artist">Aguarde</span>
+          </div>
+          <button
+            id="mobile-open-library-screen"
+            class="mobile-icon-button"
+            type="button"
+            title="Abrir biblioteca premium"
+            aria-label="Abrir biblioteca premium"
+          >
+            <i class="fa-solid fa-layer-group"></i>
+          </button>
+        </div>
+
+        <div class="mobile-progress-shell">
+          <span id="mobile-time-player">0:00</span>
+          <input
+            id="mobile-player-slide"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="0.1"
+            aria-label="Progresso da música no mobile"
+          />
+          <span id="mobile-time-end">0:00</span>
+        </div>
+
+        <div class="mobile-controls-bar">
+          <button
+            id="mobile-repeat-toggle"
+            class="mobile-icon-button"
+            type="button"
+            title="Alterar repetição"
+            aria-label="Alterar repetição"
+          >
+            <i class="fa-solid fa-repeat"></i>
+          </button>
+          <button
+            id="mobile-backward"
+            class="mobile-icon-button"
+            type="button"
+            aria-label="Música anterior"
+          >
+            <i class="fa-solid fa-backward-step"></i>
+          </button>
+          <button
+            id="mobile-play"
+            class="mobile-icon-button mobile-icon-button--primary"
+            type="button"
+            aria-label="Tocar"
+          >
+            <i class="fa-solid fa-play"></i>
+          </button>
+          <button
+            id="mobile-pause"
+            class="mobile-icon-button mobile-icon-button--primary is-hidden"
+            type="button"
+            aria-label="Pausar"
+          >
+            <i class="fa-solid fa-pause"></i>
+          </button>
+          <button
+            id="mobile-forward"
+            class="mobile-icon-button"
+            type="button"
+            aria-label="Próxima música"
+          >
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+          <button
+            id="mobile-mute-toggle"
+            class="mobile-icon-button"
+            type="button"
+            aria-label="Ativar ou desativar volume"
+          >
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+        </div>
+
+        <div class="mobile-footer-actions">
+          <div
+            class="mobile-footer-actions__dock"
+            aria-label="Ações rápidas do player"
+          >
+            <button
+              id="mobile-open-create-playlist"
+              class="mobile-action-chip"
+              type="button"
+              title="Criar playlist"
+              aria-label="Criar playlist"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+            <button
+              id="mobile-open-import-playlist"
+              class="mobile-action-chip"
+              type="button"
+              title="Importar playlist JSON"
+              aria-label="Importar playlist JSON"
+            >
+              <i class="fa-solid fa-file-import"></i>
+            </button>
+            <button
+              id="mobile-install-app-button"
+              class="mobile-action-chip is-hidden"
+              type="button"
+              title="Instalar app"
+              aria-label="Instalar app"
+            >
+              <i class="fa-solid fa-download"></i>
+            </button>
+            <label
+              class="mobile-action-chip"
+              for="local-file-input"
+              title="Importar músicas"
+              aria-label="Importar músicas"
+            >
+              <i class="fa-solid fa-file-audio"></i>
+            </label>
+            <label
+              class="mobile-action-chip"
+              for="local-folder-input"
+              title="Importar pasta de músicas"
+              aria-label="Importar pasta de músicas"
+            >
+              <i class="fa-solid fa-folder-open"></i>
+            </label>
+          </div>
+
+          <div
+            class="mobile-library-switch"
+            role="tablist"
+            aria-label="Bibliotecas mobile"
+          >
+            <button
+              id="mobile-show-online"
+              class="library-button is-active"
+              type="button"
+            >
+              Online
+            </button>
+            <button id="mobile-show-local" class="library-button" type="button">
+              Local
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="modal-layer" class="modal-layer is-hidden" aria-hidden="true">
+      <div class="modal-layer__scrim" data-modal-close="true"></div>
+      <section
+        class="modal-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <header class="modal-sheet__header">
+          <div>
+            <p id="modal-eyebrow" class="eyebrow">Modal</p>
+            <h2 id="modal-title" class="modal-sheet__title">
+              Gerenciar playlist
+            </h2>
+            <p id="modal-description" class="modal-sheet__description"></p>
+          </div>
+          <button
+            id="modal-close"
+            class="icon-button"
+            type="button"
+            aria-label="Fechar modal"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </header>
+        <div id="modal-content" class="modal-sheet__content"></div>
+        <footer class="modal-sheet__footer">
+          <button
+            id="modal-secondary"
+            class="modal-sheet__secondary is-hidden"
+            type="button"
+          ></button>
+          <button
+            id="modal-primary"
+            class="splashscreen__button"
+            type="button"
+          ></button>
+        </footer>
+      </section>
+    </div>
+
+    <div
+      id="toast-stack"
+      class="toast-stack"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+
+    <section
+      id="library-screen"
+      class="library-screen is-hidden"
+      aria-hidden="true"
+    >
+      <div class="library-screen__scrim" data-library-close="true"></div>
+      <div class="library-screen__panel">
+        <header class="library-screen__header">
+          <div>
+            <p class="eyebrow">Biblioteca premium</p>
+            <h2 class="library-screen__title">Busca, favoritos e backup</h2>
+            <p class="library-screen__copy">
+              Navegue por toda a coleção, refine a busca, reabra qualquer faixa
+              e exporte um backup completo com metadados e arquivos locais.
+            </p>
+          </div>
+          <div class="library-screen__toolbar">
+            <button
+              id="library-export-button"
+              class="playlist-studio__install"
+              type="button"
+            >
+              Backup completo
+            </button>
+            <button
+              id="library-import-button"
+              class="playlist-studio__install"
+              type="button"
+            >
+              Restaurar backup
+            </button>
+            <button
+              id="library-close"
+              class="icon-button"
+              type="button"
+              aria-label="Fechar biblioteca"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </header>
+
+        <div class="library-screen__body">
+          <section class="library-search">
+            <label class="library-search__field">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                id="library-search-input"
+                type="search"
+                placeholder="Buscar por faixa, artista, álbum, gênero ou coleção"
+              />
+            </label>
+            <div class="library-search__controls">
+              <label class="library-sort">
+                <span>Ordenar</span>
+                <select id="library-sort-select">
+                  <option value="favorites">Favoritas primeiro</option>
+                  <option value="title-asc">Titulo A-Z</option>
+                  <option value="title-desc">Titulo Z-A</option>
+                  <option value="artist-asc">Artista A-Z</option>
+                  <option value="recent-local">Locais recentes</option>
+                </select>
+              </label>
+            </div>
+            <div id="library-filters" class="library-filters"></div>
+            <div id="library-genre-chips" class="library-genre-chips"></div>
+          </section>
+
+          <section id="library-stats" class="library-stats"></section>
+
+          <section class="library-results-shell">
+            <div class="library-results-shell__header">
+              <div>
+                <p class="panel-kicker">Resultados</p>
+                <p class="library-results-shell__title">Biblioteca expandida</p>
+              </div>
+              <span
+                id="library-results-count"
+                class="playlist-studio__count"
+              ></span>
+            </div>
+            <div id="library-results" class="library-results"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script type="module" src="assets/js/main.js"></script>
+  </body>
+</html>

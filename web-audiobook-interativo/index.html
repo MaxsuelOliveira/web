@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>audioBook</title>
+    <link rel="stylesheet" href="styles/app.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <main>
+        <section id="search-bar-top">
+            <form id="searchForm" autocomplete="off"
+                style="display:flex;justify-content:center;align-items:center;gap:1rem;padding:2rem 0 1.5rem 0;">
+                <input type="text" id="searchInput" placeholder="O que você quer ouvir?"
+                    style="width:340px;max-width:90vw;padding:0.9rem 1.2rem;border-radius:2rem;border:none;font-size:1.1rem;background:#232323;color:#fff;box-shadow:0 2px 8px 0 rgba(0,0,0,0.10);outline:none;" />
+                <button id="searchButton"
+                    style="background:var(--spotify-green);color:#fff;border:none;border-radius:2rem;padding:0.9rem 2.2rem;font-size:1.1rem;cursor:pointer;transition:background 0.2s;">Buscar</button>
+            </form>
+            <div id="results" style="text-align:center;"></div>
+        </section>
+
+        <div class="main-content">
+            <div class="cover-section">
+                <img id="cover" src="" alt="Capa do Audiobook" />
+                <div class="player-title" id="book-title">Título do Audiobook</div>
+                <div class="player-author" id="book-author">Autor</div>
+                <div class="player-description" id="book-description">Descrição do audiobook aparecerá aqui.</div>
+
+                <div class="player-container">
+                    <audio id="audio"></audio>
+                    <div class="player-bar">
+                        <div class="player-bar-controls">
+                            <button id="shuffle" title="Aleatório" class="icon-btn"><span class="material-icons">shuffle</span></button>
+                            <button id="previous" title="Anterior" class="icon-btn"><span class="material-icons">skip_previous</span></button>
+                            <button id="play" title="Play" class="main-btn"><span class="material-icons">play_arrow</span></button>
+                            <button id="pause" title="Pause" class="main-btn" style="display:none;"><span class="material-icons">pause</span></button>
+                            <button id="next" title="Próximo" class="icon-btn"><span class="material-icons">skip_next</span></button>
+                            <button id="repeat" title="Repetir" class="icon-btn"><span class="material-icons">repeat</span></button>
+                        </div>
+                        <div class="player-bar-progress">
+                            <span id="currentTime">1:54</span>
+                            <input type="range" id="progress" value="0" min="0" />
+                            <span id="duration">3:10</span>
+                        </div>
+                        <div class="player-bar-volume">
+                            <span class="material-icons">volume_up</span>
+                            <input type="range" id="volume" min="0" max="1" step="0.01" value="1" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="side-info">
+                <section id="episodes">
+                    <h3>Episódios</h3>
+                    <ul id="episodes-list"></ul>
+                </section>
+                <section id="audiobook-list">
+                    <h2>Outros Audiobooks</h2>
+                    <div class="audiobook-carousel">
+                        <button class="carousel-btn carousel-prev" id="audiobookPrev" aria-label="Anterior">
+                            <span class="material-icons">chevron_left</span>
+                        </button>
+                        <ul id="audiobookUl"></ul>
+                        <button class="carousel-btn carousel-next" id="audiobookNext" aria-label="Próximo">
+                            <span class="material-icons">chevron_right</span>
+                        </button>
+                    </div>
+                </section>
+                
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="./js/api.js"></script>
+    <script type="module" src="./js/main.js"></script>
+</body>
+
+<script type="module" src="./js/api.js"></script>
+<script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
